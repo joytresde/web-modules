@@ -1,0 +1,89 @@
+---
+interface Field {
+  name:        string;
+  label:       string;
+  type:        'text' | 'email' | 'tel' | 'textarea' | 'select';
+  placeholder?: string;
+  required?:   boolean;
+  options?:    string[];
+}
+
+interface Props {
+  endpoint:  string;
+  fields:    Field[];
+  title?:    string;
+  subtitle?: string;
+  submitLabel?: string;
+}
+
+const {
+  endpoint,
+  fields,
+  title = 'Contáctanos',
+  subtitle,
+  submitLabel = 'Enviar mensaje',
+} = Astro.props;
+---
+<section class="py-20 bg-light" id="contacto">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10">
+      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-dark">{title}</h2>
+      {subtitle && <p class="mt-3 text-dark/60 text-lg">{subtitle}</p>}
+    </div>
+
+    <form
+      action={endpoint}
+      method="POST"
+      data-netlify="true"
+      class="flex flex-col gap-6 bg-background rounded-2xl p-8 shadow-sm"
+    >
+      {fields.map(field => (
+        <div class="flex flex-col gap-1.5">
+          <label for={field.name} class="font-medium text-dark text-sm">
+            {field.label}
+            {field.required && <span class="text-accent ml-1" aria-hidden="true">*</span>}
+          </label>
+
+          {field.type === 'textarea' ? (
+            <textarea
+              id={field.name}
+              name={field.name}
+              placeholder={field.placeholder}
+              required={field.required}
+              rows={5}
+              class="border border-light rounded-xl px-4 py-3 text-dark focus:outline-none focus:ring-2 focus:ring-primary resize-y"
+            ></textarea>
+          ) : field.type === 'select' ? (
+            <select
+              id={field.name}
+              name={field.name}
+              required={field.required}
+              class="border border-light rounded-xl px-4 py-3 text-dark focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+            >
+              <option value="">Seleccionar...</option>
+              {field.options?.map(opt => (
+                <option value={opt}>{opt}</option>
+              ))}
+            </select>
+          ) : (
+            <input
+              id={field.name}
+              name={field.name}
+              type={field.type}
+              placeholder={field.placeholder}
+              required={field.required}
+              class="border border-light rounded-xl px-4 py-3 text-dark focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          )}
+        </div>
+      ))}
+
+      <button
+        type="submit"
+        class="bg-primary text-background font-semibold py-3 rounded-xl hover:opacity-90 transition-opacity mt-2"
+      >
+        {submitLabel}
+      </button>
+    </form>
+  </div>
+</section>

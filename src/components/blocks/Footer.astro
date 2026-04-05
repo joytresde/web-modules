@@ -1,0 +1,56 @@
+---
+import type { FooterContent } from '@/types/content';
+
+interface Props extends FooterContent {
+  businessName: string;
+}
+
+const { links, social = [], legalText, businessName } = Astro.props;
+const year = new Date().getFullYear();
+---
+<footer class="bg-surface-inverse text-white/60 py-12">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+      <p class="font-heading font-bold text-white text-lg">{businessName}</p>
+
+      {links.length > 0 && (
+        <nav aria-label="Footer">
+          <ul class="flex flex-wrap gap-6 list-none m-0 p-0">
+            {links.map(link => (
+              <li>
+                <a href={link.href} class="text-sm hover:text-white transition-colors">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+
+      {social.length > 0 && (
+        <ul class="flex gap-4 list-none m-0 p-0">
+          {social.map(s => (
+            <li>
+              <a
+                href={s.href}
+                aria-label={s.platform}
+                class="text-sm hover:text-white transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {s.platform}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+
+    <div class="mt-8 pt-6 border-t border-white/10 text-center text-xs">
+      {legalText
+        ? <p>{legalText}</p>
+        : <p>© {year} {businessName}. Todos los derechos reservados.</p>
+      }
+    </div>
+  </div>
+</footer>

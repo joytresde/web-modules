@@ -1,0 +1,56 @@
+---
+import type { ProcessStep } from '@/types/content';
+
+interface Props {
+  steps:     ProcessStep[];
+  title?:    string;
+  subtitle?: string;
+}
+
+const { steps, title = '¿Cómo trabajamos?', subtitle } = Astro.props;
+---
+<section class="py-20 bg-background" id="proceso">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    {(title || subtitle) && (
+      <div class="text-center mb-14">
+        {title && (
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-dark">{title}</h2>
+        )}
+        {subtitle && (
+          <p class="mt-4 text-dark/60 text-lg max-w-2xl mx-auto">{subtitle}</p>
+        )}
+      </div>
+    )}
+
+    <ol class="flex flex-col lg:flex-row gap-8 lg:gap-0 list-none m-0 p-0">
+      {steps.map((step, index) => (
+        <li class="relative flex-1 flex flex-col items-center text-center px-4">
+
+          <!-- Connector line between steps (desktop only) -->
+          {index < steps.length - 1 && (
+            <span
+              aria-hidden="true"
+              class="hidden lg:block absolute top-6 left-[calc(50%+2rem)] right-[calc(-50%+2rem)] h-0.5 bg-secondary/25"
+            ></span>
+          )}
+
+          <!-- Circle -->
+          <div class="relative z-10 flex items-center justify-center w-12 h-12 rounded-full bg-primary text-background font-heading font-extrabold text-lg mb-5 shrink-0 shadow-md">
+            {step.icon
+              ? <span aria-hidden="true" class="text-xl leading-none">{step.icon}</span>
+              : <span>{step.number}</span>
+            }
+          </div>
+
+          <h3 class="font-heading text-lg font-bold text-dark mb-2">{step.title}</h3>
+          <p class="text-dark/60 text-sm leading-relaxed max-w-[200px] mx-auto">
+            {step.description}
+          </p>
+
+        </li>
+      ))}
+    </ol>
+
+  </div>
+</section>

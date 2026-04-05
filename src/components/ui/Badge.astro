@@ -1,0 +1,16 @@
+---
+interface Props {
+  color?: 'accent' | 'primary' | 'secondary';
+}
+
+const { color = 'accent' } = Astro.props;
+
+const colorClasses: Record<string, string> = {
+  accent:    'bg-accent/10 text-accent',
+  primary:   'bg-primary/10 text-primary',
+  secondary: 'bg-secondary/10 text-secondary',
+};
+---
+<span class={`inline-block text-xs font-semibold px-3 py-1 rounded-full ${colorClasses[color]}`}>
+  <slot />
+</span>

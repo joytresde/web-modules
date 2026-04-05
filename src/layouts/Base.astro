@@ -1,0 +1,86 @@
+---
+import type { Theme } from '@/types/theme';
+import '@/styles/global.css';
+
+interface Props {
+  theme:        Theme;
+  title?:       string;
+  description?: string;
+  ogImage?:     string;
+}
+
+const { theme, title, description, ogImage } = Astro.props;
+
+const colorScheme     = theme.colorScheme ?? 'light';
+const pageTitle       = title ? `${title} | ${theme.businessName}` : theme.businessName;
+const pageDescription = description ?? theme.tagline;
+const dk              = theme.darkColors;
+---
+<!doctype html>
+<html lang={theme.locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={pageDescription} />
+    <meta property="og:title"       content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type"        content="website" />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <title>{pageTitle}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href={`https://fonts.googleapis.com/css2?family=${theme.fonts.heading.replace(/ /g,'+')}:wght@400;600;700;800&family=${theme.fonts.body.replace(/ /g,'+')}:wght@400;500;600&display=swap`}
+      rel="stylesheet"
+    />
+
+    <!-- Anti-FOUC: must run before first paint -->
+    {colorScheme === 'forced-dark' && (
+      <script is:inline>document.documentElement.classList.add('dark');</script>
+    )}
+    {colorScheme === 'auto' && (
+      <script is:inline>
+        (function () {
+          var s = localStorage.getItem('color-scheme');
+          if (s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          }
+        })();
+      </script>
+    )}
+
+    <!--
+      CSS vars:
+      - Light vars injected directly via define:vars
+      - Dark vars stored with -dm suffix in :root, then aliased in html.dark {}
+    -->
+    <style define:vars={{
+      'color-primary':            theme.colors.primary,
+      'color-secondary':          theme.colors.secondary,
+      'color-accent':             theme.colors.accent,
+      'color-dark':               theme.colors.dark,
+      'color-light':              theme.colors.light,
+      'color-background':         theme.colors.background,
+      'color-surface-inverse':    theme.colors.surfaceInverse,
+      'font-heading':             `'${theme.fonts.heading}'`,
+      'font-body':                `'${theme.fonts.body}'`,
+      /* Dark-mode source values (fall back to light if no darkColors) */
+      'color-dark-dm':            dk?.dark            ?? theme.colors.dark,
+      'color-background-dm':      dk?.background      ?? theme.colors.background,
+      'color-light-dm':           dk?.light           ?? theme.colors.light,
+      'color-surface-inverse-dm': dk?.surfaceInverse  ?? theme.colors.surfaceInverse,
+    }}>
+      :root {}
+      html.dark {
+        --color-dark:            var(--color-dark-dm);
+        --color-background:      var(--color-background-dm);
+        --color-light:           var(--color-light-dm);
+        --color-surface-inverse: var(--color-surface-inverse-dm);
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

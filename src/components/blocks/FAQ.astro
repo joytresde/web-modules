@@ -1,0 +1,36 @@
+---
+import type { FAQItem } from '@/types/content';
+
+interface Props {
+  items:  FAQItem[];
+  title?: string;
+}
+
+const { items, title = 'Preguntas frecuentes' } = Astro.props;
+---
+<section class="py-20 bg-light" id="faq">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-dark text-center mb-14">
+      {title}
+    </h2>
+    <div class="flex flex-col gap-4">
+      {items.map((item) => (
+        <details
+          class="group bg-background rounded-2xl border border-light overflow-hidden"
+          name="faq"
+        >
+          <summary class="flex items-center justify-between gap-4 p-6 cursor-pointer list-none font-semibold text-dark hover:text-primary transition-colors">
+            {item.question}
+            <span
+              class="shrink-0 w-6 h-6 flex items-center justify-center text-accent transition-transform duration-200 group-open:rotate-45"
+              aria-hidden="true"
+            >+</span>
+          </summary>
+          <div class="px-6 pb-6 text-dark/70 leading-relaxed">
+            {item.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

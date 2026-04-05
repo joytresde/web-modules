@@ -1,0 +1,21 @@
+---
+import type { StatItem } from '@/types/content';
+
+interface Props {
+  stats: StatItem[];
+}
+
+const { stats } = Astro.props;
+---
+<section class="bg-primary py-14">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <dl class="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+      {stats.map(stat => (
+        <div>
+          <dt class="font-heading text-4xl font-extrabold text-background">{stat.value}</dt>
+          <dd class="mt-2 text-background/70 text-sm font-medium uppercase tracking-wide">{stat.label}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>

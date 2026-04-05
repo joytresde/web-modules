@@ -1,0 +1,38 @@
+---
+import type { TestimonialItem } from '@/types/content';
+
+interface Props {
+  items:    TestimonialItem[];
+  title?:   string;
+}
+
+const { items, title = 'Lo que dicen nuestros clientes' } = Astro.props;
+---
+<section class="py-20 bg-background" id="testimonios">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-dark text-center mb-14">
+      {title}
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {items.map(item => (
+        <blockquote class="bg-light rounded-2xl p-8 flex flex-col gap-4">
+          <p class="text-dark/70 leading-relaxed italic">"{item.text}"</p>
+          <footer class="flex items-center gap-3 mt-auto">
+            {item.avatar && (
+              <img
+                src={item.avatar}
+                alt={item.name}
+                class="w-10 h-10 rounded-full object-cover"
+                loading="lazy"
+              />
+            )}
+            <div>
+              <p class="font-semibold text-dark text-sm">{item.name}</p>
+              {item.role && <p class="text-dark/50 text-xs">{item.role}</p>}
+            </div>
+          </footer>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+</section>

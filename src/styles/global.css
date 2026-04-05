@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+/* Dark mode activado por clase .dark en <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary:         var(--color-primary);
+  --color-secondary:       var(--color-secondary);
+  --color-accent:          var(--color-accent);
+  --color-dark:            var(--color-dark);
+  --color-light:           var(--color-light);
+  --color-background:      var(--color-background);
+  --color-surface-inverse: var(--color-surface-inverse);
+
+  --font-heading: var(--font-heading), sans-serif;
+  --font-body:    var(--font-body), sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-dark);
+  font-family: var(--font-body), sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), sans-serif;
+}

@@ -1,0 +1,85 @@
+---
+import type { PricingPlan } from '@/types/content';
+
+interface Props {
+  plans:     PricingPlan[];
+  title?:    string;
+  subtitle?: string;
+}
+
+const { plans, title = 'Nuestros Planes', subtitle } = Astro.props;
+---
+<section class="py-20 bg-light" id="precios">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    {(title || subtitle) && (
+      <div class="text-center mb-14">
+        {title && (
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-dark">{title}</h2>
+        )}
+        {subtitle && (
+          <p class="mt-4 text-dark/60 text-lg max-w-2xl mx-auto">{subtitle}</p>
+        )}
+      </div>
+    )}
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
+      {plans.map(plan => (
+        <article
+          class={[
+            'relative flex flex-col rounded-2xl p-8 shadow-md transition-transform duration-200',
+            plan.featured
+              ? 'bg-primary text-background sm:scale-105 shadow-2xl ring-2 ring-accent z-10'
+              : 'bg-background text-dark',
+          ].join(' ')}
+        >
+          {plan.featured && (
+            <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-background text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest shadow">
+              Más popular
+            </span>
+          )}
+
+          <header class="mb-6">
+            <h3 class={`font-heading text-xl font-bold mb-4 ${plan.featured ? 'text-background' : 'text-dark'}`}>
+              {plan.name}
+            </h3>
+            <div class="flex items-end gap-1">
+              <span class={`font-heading text-5xl font-extrabold ${plan.featured ? 'text-background' : 'text-primary'}`}>
+                {plan.price}
+              </span>
+              <span class={`text-sm pb-2 ${plan.featured ? 'text-background/70' : 'text-dark/50'}`}>
+                {plan.currency} / {plan.period}
+              </span>
+            </div>
+          </header>
+
+          <ul class="flex flex-col gap-3 mb-8 flex-1 list-none m-0 p-0">
+            {plan.features.map(feature => (
+              <li class={`flex items-start gap-2 text-sm ${
+                feature.included === false
+                  ? plan.featured ? 'text-background/35 line-through' : 'text-dark/25 line-through'
+                  : plan.featured ? 'text-background/90'              : 'text-dark/75'
+              }`}>
+                <span aria-hidden="true" class="mt-0.5 shrink-0 font-bold">
+                  {feature.included === false ? '✕' : '✓'}
+                </span>
+                {feature.text}
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href={plan.cta.href}
+            class={[
+              'inline-flex items-center justify-center w-full py-3 rounded-xl font-semibold text-sm transition-opacity hover:opacity-90',
+              plan.featured ? 'bg-accent text-background' : 'bg-primary text-background',
+            ].join(' ')}
+          >
+            {plan.cta.label}
+          </a>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

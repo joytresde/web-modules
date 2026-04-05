@@ -1,0 +1,82 @@
+---
+/**
+ * Demo: Servicios del Hogar — TécnicosPro
+ * Modo: CLARO (forzado)
+ * Composición: Hero → Servicios → Proceso → Stats → Nosotros (reverse) → CTA → Testimonios → FAQ → Contacto
+ */
+import Base         from '@/layouts/Base.astro';
+import Navbar       from '@/components/blocks/Navbar.astro';
+import HeroCentered from '@/components/blocks/HeroCentered.astro';
+import CardGrid     from '@/components/blocks/CardGrid.astro';
+import ProcessSteps from '@/components/blocks/ProcessSteps.astro';
+import StatsBar     from '@/components/blocks/StatsBar.astro';
+import About        from '@/components/blocks/About.astro';
+import CTABanner    from '@/components/blocks/CTABanner.astro';
+import Testimonials from '@/components/blocks/Testimonials.astro';
+import FAQ          from '@/components/blocks/FAQ.astro';
+import ContactForm  from '@/components/blocks/ContactForm.astro';
+import Footer       from '@/components/blocks/Footer.astro';
+import WhatsAppFloat from '@/components/blocks/WhatsAppFloat.astro';
+
+import { theme }   from '@clients/servicios/theme';
+import { content } from '@clients/servicios/content';
+---
+<Base theme={theme}>
+  <Navbar
+    links={content.nav!}
+    businessName={theme.businessName}
+    ctaLabel="Solicitar servicio"
+    ctaHref="#contacto"
+  />
+
+  <HeroCentered {...content.hero!} />
+
+  <CardGrid
+    items={content.services!}
+    columns={3}
+    title="Lo que reparamos"
+    subtitle="Cualquier problema en tu hogar, lo resolvemos."
+  />
+
+  <ProcessSteps
+    steps={content.processSteps!.steps}
+    title="¿Cómo funciona?"
+    subtitle="Cuatro pasos simples para tener tu hogar en orden."
+  />
+
+  <StatsBar stats={content.stats!} />
+
+  <About
+    text={content.about!.text}
+    image={content.about!.image}
+    title={content.about!.title}
+    reverse={true}
+  />
+
+  <CTABanner
+    title="¿Tienes una emergencia en casa?"
+    subtitle="Llámanos ahora. Respondemos 24/7 y llegamos en menos de 2 horas."
+    primaryCta={{ label: 'WhatsApp directo', href: `https://wa.me/584141234567` }}
+    secondaryCta={{ label: 'Ver servicios', href: '#servicios' }}
+  />
+
+  <Testimonials items={content.testimonials!} title="Lo que dicen nuestros clientes" />
+
+  <FAQ items={content.faq!} title="Preguntas frecuentes" />
+
+  <ContactForm
+    endpoint={content.contact!.formEndpoint!}
+    title="Solicita tu presupuesto gratis"
+    subtitle="Te respondemos en menos de 24 horas."
+    fields={[
+      { name: 'name',    label: 'Nombre completo',      type: 'text',    required: true },
+      { name: 'phone',   label: 'WhatsApp / Teléfono',  type: 'tel',     required: true },
+      { name: 'service', label: 'Tipo de servicio',     type: 'select',  required: true,
+        options: ['Plomería', 'Electricidad', 'Aire Acondicionado', 'Carpintería', 'Pintura', 'Gasfitería', 'Otro'] },
+      { name: 'message', label: 'Descripción del problema', type: 'textarea' },
+    ]}
+  />
+
+  <Footer {...content.footer!} businessName={theme.businessName} />
+  <WhatsAppFloat {...content.whatsappFloat!} />
+</Base>

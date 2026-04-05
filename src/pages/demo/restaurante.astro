@@ -1,0 +1,87 @@
+---
+/**
+ * Demo: Restaurante — El Fogón de Caracas
+ * Modo: OSCURO (forzado) — tipografía Playfair Display + Lato, paleta cálida marrón/ámbar
+ * Composición: Hero → Nosotros → Menú (CardGrid) → Galería → Stats → Testimonios → CTA → Reservas → Mapa → Footer
+ */
+import Base         from '@/layouts/Base.astro';
+import Navbar       from '@/components/blocks/Navbar.astro';
+import HeroCentered from '@/components/blocks/HeroCentered.astro';
+import About        from '@/components/blocks/About.astro';
+import CardGrid     from '@/components/blocks/CardGrid.astro';
+import Gallery      from '@/components/blocks/Gallery.astro';
+import StatsBar     from '@/components/blocks/StatsBar.astro';
+import Testimonials from '@/components/blocks/Testimonials.astro';
+import CTABanner    from '@/components/blocks/CTABanner.astro';
+import ContactForm  from '@/components/blocks/ContactForm.astro';
+import MapEmbed     from '@/components/blocks/MapEmbed.astro';
+import Footer       from '@/components/blocks/Footer.astro';
+import WhatsAppFloat from '@/components/blocks/WhatsAppFloat.astro';
+
+import { theme }   from '@clients/restaurante/theme';
+import { content } from '@clients/restaurante/content';
+---
+<Base theme={theme}>
+  <Navbar
+    links={content.nav!}
+    businessName={theme.businessName}
+    ctaLabel="Reservar mesa"
+    ctaHref="#contacto"
+  />
+
+  <HeroCentered {...content.hero!} />
+
+  <About
+    text={content.about!.text}
+    image={content.about!.image}
+    title={content.about!.title}
+  />
+
+  <CardGrid
+    items={content.services!}
+    columns={2}
+    title="Nuestros Platos"
+    subtitle="Recetas de generación en generación, con ingredientes frescos del mercado."
+  />
+
+  <Gallery
+    images={content.gallery!}
+    title="Una muestra de nuestra cocina"
+    columns={3}
+  />
+
+  <StatsBar stats={content.stats!} />
+
+  <Testimonials items={content.testimonials!} title="Lo que dicen nuestros comensales" />
+
+  <CTABanner
+    title={content.ctaBanner!.title}
+    subtitle={content.ctaBanner!.subtitle}
+    primaryCta={content.ctaBanner!.primaryCta}
+    secondaryCta={content.ctaBanner!.secondaryCta}
+  />
+
+  <ContactForm
+    endpoint={content.contact!.formEndpoint!}
+    title="Reserva tu mesa"
+    subtitle="Te confirmamos en menos de 2 horas."
+    submitLabel="Solicitar reserva"
+    fields={[
+      { name: 'name',    label: 'Nombre completo',  type: 'text',    required: true },
+      { name: 'phone',   label: 'WhatsApp',         type: 'tel',     required: true },
+      { name: 'guests',  label: 'N° de personas',   type: 'select',  required: true,
+        options: ['1–2', '3–5', '6–10', '11–20', 'Más de 20'] },
+      { name: 'date',    label: 'Fecha preferida',  type: 'text',    placeholder: 'Ej: 20 de diciembre' },
+      { name: 'message', label: 'Nota especial',    type: 'textarea' },
+    ]}
+  />
+
+  <MapEmbed
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62938.93907834547!2d-66.97392934999999!3d10.48801145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a58adcd824807%3A0x71a3cb95ec680a5f!2sChacao%2C%20Caracas!5e0!3m2!1ses!2sve!4v1704067200000!5m2!1ses!2sve"
+    label="Av. Francisco de Miranda, Chacao, Caracas"
+    title="Nuestra ubicación"
+  />
+
+  <Footer {...content.footer!} businessName={theme.businessName} />
+  <WhatsAppFloat {...content.whatsappFloat!} />
+</Base>

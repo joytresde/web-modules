@@ -1,0 +1,54 @@
+---
+import type { LogoItem } from '@/types/content';
+
+interface Props {
+  logos:  LogoItem[];
+  title?: string;
+}
+
+const { logos, title = 'Confían en nosotros' } = Astro.props;
+---
+<section class="py-12 bg-background border-y border-light" id="clientes">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    {title && (
+      <p class="text-center text-xs font-semibold uppercase tracking-widest text-dark/40 mb-8">
+        {title}
+      </p>
+    )}
+
+    <ul class="flex flex-wrap items-center justify-center gap-8 sm:gap-14 list-none m-0 p-0">
+      {logos.map(logo => (
+        <li>
+          {logo.href
+            ? (
+              <a
+                href={logo.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={logo.alt}
+                class="block"
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  class="h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  loading="lazy"
+                />
+              </a>
+            )
+            : (
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                class="h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                loading="lazy"
+              />
+            )
+          }
+        </li>
+      ))}
+    </ul>
+
+  </div>
+</section>

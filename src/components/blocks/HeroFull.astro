@@ -1,0 +1,41 @@
+---
+import type { CTA } from '@/types/content';
+import { Image } from 'astro:assets';
+
+interface Props {
+  title:    string;
+  subtitle: string;
+  cta:      CTA;
+  image:    ImageMetadata;
+  imageAlt?: string;
+}
+
+const { title, subtitle, cta, image, imageAlt = '' } = Astro.props;
+---
+<section class="relative min-h-[600px] flex items-center overflow-hidden">
+  <!-- Imagen de fondo -->
+  <Image
+    src={image}
+    alt={imageAlt}
+    class="absolute inset-0 w-full h-full object-cover"
+    widths={[640, 1280, 1920]}
+    sizes="100vw"
+  />
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-dark/60"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-background leading-tight max-w-3xl">
+      {title}
+    </h1>
+    <p class="mt-6 text-lg sm:text-xl text-background/90 max-w-xl">
+      {subtitle}
+    </p>
+    <a
+      href={cta.href}
+      class="mt-8 inline-flex bg-accent text-background px-8 py-3 rounded-xl font-semibold text-lg hover:opacity-90 transition-opacity"
+    >
+      {cta.label}
+    </a>
+  </div>
+</section>

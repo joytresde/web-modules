@@ -1,0 +1,43 @@
+---
+import type { ServiceItem } from '@/types/content';
+
+interface Props {
+  items:     ServiceItem[];
+  columns?:  2 | 3 | 4;
+  title?:    string;
+  subtitle?: string;
+}
+
+const { items, columns = 3, title, subtitle } = Astro.props;
+
+const gridCols: Record<number, string> = {
+  2: 'sm:grid-cols-2',
+  3: 'sm:grid-cols-2 lg:grid-cols-3',
+  4: 'sm:grid-cols-2 lg:grid-cols-4',
+};
+---
+<section class="py-20 bg-background" id="servicios">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    {(title || subtitle) && (
+      <div class="text-center mb-14">
+        {title && (
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-dark">{title}</h2>
+        )}
+        {subtitle && (
+          <p class="mt-4 text-dark/60 text-lg max-w-2xl mx-auto">{subtitle}</p>
+        )}
+      </div>
+    )}
+    <div class={`grid grid-cols-1 ${gridCols[columns]} gap-8`}>
+      {items.map(item => (
+        <article class="bg-light rounded-2xl p-8 flex flex-col gap-4 hover:shadow-lg transition-shadow">
+          {item.icon && (
+            <span class="text-4xl" aria-hidden="true">{item.icon}</span>
+          )}
+          <h3 class="font-heading text-xl font-bold text-dark">{item.title}</h3>
+          <p class="text-dark/70 leading-relaxed">{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

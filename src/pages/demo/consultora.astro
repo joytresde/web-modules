@@ -1,0 +1,87 @@
+---
+/**
+ * Demo: Consultora — Mendoza & Asociados
+ * Modo: TOGGLE (auto — respeta OS, persiste en localStorage)
+ * Tipografía: Cormorant Garamond + Source Sans 3 — aspecto premium
+ * Composición: Hero → Logos → Servicios → Proceso → Precios → Testimonios → FAQ → Contacto
+ */
+import Base          from '@/layouts/Base.astro';
+import Navbar        from '@/components/blocks/Navbar.astro';
+import HeroCentered  from '@/components/blocks/HeroCentered.astro';
+import LogoBar       from '@/components/blocks/LogoBar.astro';
+import CardGrid      from '@/components/blocks/CardGrid.astro';
+import ProcessSteps  from '@/components/blocks/ProcessSteps.astro';
+import StatsBar      from '@/components/blocks/StatsBar.astro';
+import PricingCards  from '@/components/blocks/PricingCards.astro';
+import Testimonials  from '@/components/blocks/Testimonials.astro';
+import FAQ           from '@/components/blocks/FAQ.astro';
+import ContactForm   from '@/components/blocks/ContactForm.astro';
+import Footer        from '@/components/blocks/Footer.astro';
+import WhatsAppFloat from '@/components/blocks/WhatsAppFloat.astro';
+
+import { theme }   from '@clients/consultora/theme';
+import { content } from '@clients/consultora/content';
+---
+<Base theme={theme}>
+  <!-- showThemeToggle activa el botón sol/luna en la Navbar -->
+  <Navbar
+    links={content.nav!}
+    businessName={theme.businessName}
+    ctaLabel="Consulta gratuita"
+    ctaHref="#contacto"
+    showThemeToggle={true}
+  />
+
+  <HeroCentered {...content.hero!} />
+
+  <LogoBar logos={content.logoBar!.logos} title={content.logoBar!.title} />
+
+  <CardGrid
+    items={content.services!}
+    columns={3}
+    title="Nuestros Servicios"
+    subtitle="Cobertura integral contable, fiscal y estratégica para tu empresa."
+  />
+
+  <ProcessSteps
+    steps={content.processSteps!.steps}
+    title={content.processSteps!.title}
+    subtitle={content.processSteps!.subtitle}
+  />
+
+  <StatsBar stats={[
+    { value: '120+', label: 'Empresas asesoradas' },
+    { value: '18 años', label: 'De experiencia' },
+    { value: '98%', label: 'Renovación anual' },
+    { value: '0',   label: 'Multas SENIAT a clientes' },
+  ]} />
+
+  <PricingCards
+    plans={content.pricing!.plans}
+    title={content.pricing!.title}
+    subtitle={content.pricing!.subtitle}
+  />
+
+  <Testimonials items={content.testimonials!} title="Empresas que confían en nosotros" />
+
+  <FAQ items={content.faq!} title="Preguntas frecuentes" />
+
+  <ContactForm
+    endpoint={content.contact!.formEndpoint!}
+    title="Agenda tu consulta gratuita"
+    subtitle="Sin compromiso. Respondemos en menos de 24 horas."
+    submitLabel="Solicitar consulta"
+    fields={[
+      { name: 'name',    label: 'Nombre completo',           type: 'text',    required: true },
+      { name: 'company', label: 'Empresa',                   type: 'text',    required: true },
+      { name: 'email',   label: 'Correo electrónico',        type: 'email',   required: true },
+      { name: 'phone',   label: 'WhatsApp',                  type: 'tel' },
+      { name: 'service', label: 'Servicio de interés',       type: 'select',
+        options: ['Contabilidad', 'Asesoría Fiscal', 'Auditoría', 'Nómina y RRHH', 'Constitución de Empresa', 'Consultoría Estratégica'] },
+      { name: 'message', label: 'Cuéntanos sobre tu empresa', type: 'textarea' },
+    ]}
+  />
+
+  <Footer {...content.footer!} businessName={theme.businessName} />
+  <WhatsAppFloat {...content.whatsappFloat!} />
+</Base>

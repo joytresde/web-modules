@@ -1,0 +1,45 @@
+---
+import type { CTA } from '@/types/content';
+
+interface Props {
+  title:         string;
+  subtitle?:     string;
+  primaryCta:    CTA;
+  secondaryCta?: CTA;
+}
+
+const { title, subtitle, primaryCta, secondaryCta } = Astro.props;
+---
+<section class="bg-surface-inverse py-20" id="cta-banner">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+    <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+      {title}
+    </h2>
+
+    {subtitle && (
+      <p class="mt-6 text-white/70 text-lg sm:text-xl max-w-2xl mx-auto">
+        {subtitle}
+      </p>
+    )}
+
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a
+        href={primaryCta.href}
+        class="inline-flex items-center justify-center bg-accent text-white px-8 py-3 rounded-xl font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg w-full sm:w-auto"
+      >
+        {primaryCta.label}
+      </a>
+
+      {secondaryCta && (
+        <a
+          href={secondaryCta.href}
+          class="inline-flex items-center justify-center border-2 border-white/40 text-white px-8 py-3 rounded-xl font-semibold text-lg hover:bg-white/10 transition-colors w-full sm:w-auto"
+        >
+          {secondaryCta.label}
+        </a>
+      )}
+    </div>
+
+  </div>
+</section>
