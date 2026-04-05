@@ -4,30 +4,33 @@ import CatalogLayout from '@/layouts/CatalogLayout.astro';
 const components = [
   {
     category: 'Estructura y Navegación',
-    color:    'bg-violet-500/10 border-violet-500/30 text-violet-300',
-    dot:      'bg-violet-400',
+    accent:   '#557bd6',
+    badge:    'bg-[#557bd6]',
+    border:   'hover:border-[#557bd6]/50',
     items: [
-      { name: 'Navbar',        file: 'Navbar.astro',        icon: '🧭', desc: 'Barra de navegación sticky con menú hamburguesa para móvil y CTA opcional.' },
-      { name: 'Footer',        file: 'Footer.astro',        icon: '📄', desc: 'Pie de página con links de navegación, redes sociales y texto legal.' },
+      { name: 'Navbar',        file: 'Navbar.astro',        icon: '🧭', desc: 'Barra sticky con menú hamburguesa para móvil, CTA configurable y toggle de tema claro/oscuro.' },
+      { name: 'Footer',        file: 'Footer.astro',        icon: '📄', desc: 'Pie de página con columnas de links, iconos de redes sociales y texto legal.' },
       { name: 'WhatsAppFloat', file: 'WhatsAppFloat.astro', icon: '💬', desc: 'Botón flotante fijo (bottom-right) que abre WhatsApp con mensaje pre-llenado.' },
     ],
   },
   {
     category: 'Hero / Entrada',
-    color:    'bg-sky-500/10 border-sky-500/30 text-sky-300',
-    dot:      'bg-sky-400',
+    accent:   '#7c3aed',
+    badge:    'bg-[#7c3aed]',
+    border:   'hover:border-[#7c3aed]/50',
     items: [
-      { name: 'HeroFull',     file: 'HeroFull.astro',     icon: '🖼️', desc: 'Hero con imagen de fondo full-screen vía <Image /> de Astro y overlay oscuro.' },
-      { name: 'HeroCentered', file: 'HeroCentered.astro', icon: '🎯', desc: 'Hero centrado con imagen de fondo externa, degradado overlay y badge opcional.' },
+      { name: 'HeroFull',     file: 'HeroFull.astro',     icon: '🖼️', desc: 'Hero con imagen de fondo full-screen vía <Image /> de Astro y overlay oscuro configurable.' },
+      { name: 'HeroCentered', file: 'HeroCentered.astro', icon: '🎯', desc: 'Hero centrado con imagen de fondo externa, degradado overlay, badge y CTA doble.' },
     ],
   },
   {
     category: 'Contenido Principal',
-    color:    'bg-emerald-500/10 border-emerald-500/30 text-emerald-300',
-    dot:      'bg-emerald-400',
+    accent:   '#10b981',
+    badge:    'bg-emerald-500',
+    border:   'hover:border-emerald-500/50',
     items: [
-      { name: 'About',        file: 'About.astro',        icon: '👥', desc: 'Sección "Nosotros" con texto descriptivo e imagen lateral. Prop reverse para alternar posición.' },
-      { name: 'CardGrid',     file: 'CardGrid.astro',     icon: '🗂️', desc: 'Grid de tarjetas para servicios o productos. Soporta 2, 3 o 4 columnas con ícono.' },
+      { name: 'About',        file: 'About.astro',        icon: '👥', desc: 'Sección "Nosotros" con texto e imagen lateral. Prop reverse para alternar posición.' },
+      { name: 'CardGrid',     file: 'CardGrid.astro',     icon: '🗂️', desc: 'Grid de tarjetas para servicios. Soporta 2, 3 o 4 columnas con ícono SVG.' },
       { name: 'Gallery',      file: 'Gallery.astro',      icon: '🖼️', desc: 'Galería de imágenes en grid con efecto zoom-in en hover. Columns 2, 3 o 4.' },
       { name: 'LogoBar',      file: 'LogoBar.astro',      icon: '🏢', desc: 'Franja de logos de clientes en grayscale con efecto de color al hacer hover.' },
       { name: 'ProcessSteps', file: 'ProcessSteps.astro', icon: '➡️', desc: 'Pasos numerados horizontales en desktop / verticales en móvil. Línea conectora en CSS puro.' },
@@ -35,30 +38,33 @@ const components = [
   },
   {
     category: 'Conversión',
-    color:    'bg-orange-500/10 border-orange-500/30 text-orange-300',
-    dot:      'bg-orange-400',
+    accent:   '#f97316',
+    badge:    'bg-orange-500',
+    border:   'hover:border-orange-500/50',
     items: [
       { name: 'CTABanner',    file: 'CTABanner.astro',    icon: '📢', desc: 'Banner oscuro de interrupción con título grande y dos CTAs (primario + secundario).' },
-      { name: 'PricingCards', file: 'PricingCards.astro', icon: '💰', desc: 'Tarjetas de precios con plan "featured" elevado, lista de features con ✓/✕ y tachado.' },
-      { name: 'ContactForm',  file: 'ContactForm.astro',  icon: '📧', desc: 'Formulario flexible con soporte para text, email, tel, textarea y select. Netlify Forms.' },
+      { name: 'PricingCards', file: 'PricingCards.astro', icon: '💰', desc: 'Tarjetas de precios con plan destacado, lista de features con ✓/✕ y tachado.' },
+      { name: 'ContactForm',  file: 'ContactForm.astro',  icon: '📧', desc: 'Formulario flexible: text, email, tel, textarea y select. Compatible con Netlify Forms.' },
     ],
   },
   {
     category: 'Social Proof',
-    color:    'bg-yellow-500/10 border-yellow-500/30 text-yellow-300',
-    dot:      'bg-yellow-400',
+    accent:   '#eab308',
+    badge:    'bg-yellow-500',
+    border:   'hover:border-yellow-500/50',
     items: [
-      { name: 'Testimonials', file: 'Testimonials.astro', icon: '⭐', desc: 'Grid de testimonios con avatar, nombre, rol y texto en estilo blockquote.' },
-      { name: 'StatsBar',     file: 'StatsBar.astro',     icon: '📊', desc: 'Barra de estadísticas sobre fondo primary con valor grande y etiqueta.' },
+      { name: 'Testimonials', file: 'Testimonials.astro', icon: '⭐', desc: 'Grid de testimonios con avatar, nombre, rol y texto en estilo blockquote con estrellitas.' },
+      { name: 'StatsBar',     file: 'StatsBar.astro',     icon: '📊', desc: 'Barra de estadísticas sobre fondo primary con valor grande y etiqueta descriptiva.' },
     ],
   },
   {
     category: 'Información',
-    color:    'bg-rose-500/10 border-rose-500/30 text-rose-300',
-    dot:      'bg-rose-400',
+    accent:   '#ef4444',
+    badge:    'bg-red-500',
+    border:   'hover:border-red-500/50',
     items: [
-      { name: 'FAQ',       file: 'FAQ.astro',       icon: '❓', desc: 'Acordeón de preguntas frecuentes con animación CSS pura usando <details> nativo.' },
-      { name: 'MapEmbed',  file: 'MapEmbed.astro',  icon: '📍', desc: 'Embed de Google Maps o cualquier iframe responsivo con aspect-ratio 16/9.' },
+      { name: 'FAQ',      file: 'FAQ.astro',      icon: '❓', desc: 'Acordeón de preguntas frecuentes con animación CSS pura usando <details> nativo del navegador.' },
+      { name: 'MapEmbed', file: 'MapEmbed.astro', icon: '📍', desc: 'Embed de Google Maps o cualquier iframe responsivo con aspect-ratio 16/9.' },
     ],
   },
 ];
@@ -68,101 +74,169 @@ const demos = [
     href:       '/demo/servicios',
     title:      'Servicios del Hogar',
     client:     'TécnicosPro',
-    desc:       'Empresa de plomería, electricidad y aires acondicionados en Caracas.',
-    color:      'from-blue-600 to-orange-500',
-    components: ['Navbar', 'HeroCentered', 'CardGrid', 'ProcessSteps', 'StatsBar', 'About', 'Testimonials', 'FAQ', 'ContactForm', 'Footer', 'WhatsAppFloat'],
-    tag:        'Servicios técnicos',
+    desc:       'Empresa de plomería, electricidad y aires acondicionados. Modo claro forzado.',
+    gradient:   'from-blue-600 via-blue-700 to-orange-500',
+    accent:     '#557bd6',
+    tag:        'Modo Claro',
+    components: ['Navbar', 'HeroCentered', 'CardGrid', 'ProcessSteps', 'StatsBar', 'About', 'Testimonials', 'FAQ', 'ContactForm', 'Footer'],
   },
   {
     href:       '/demo/restaurante',
     title:      'Restaurante',
     client:     'El Fogón de Caracas',
-    desc:       'Restaurante de cocina venezolana tradicional con reservas y galería.',
-    color:      'from-red-800 to-amber-600',
-    components: ['Navbar', 'HeroCentered', 'About', 'CardGrid', 'Gallery', 'StatsBar', 'Testimonials', 'CTABanner', 'ContactForm', 'Footer', 'WhatsAppFloat'],
-    tag:        'Restaurante & Food',
+    desc:       'Cocina venezolana tradicional con reservas, galería y mapa. Modo oscuro forzado.',
+    gradient:   'from-red-900 via-amber-800 to-amber-600',
+    accent:     '#f59e0b',
+    tag:        'Modo Oscuro',
+    components: ['Navbar', 'HeroCentered', 'About', 'CardGrid', 'Gallery', 'StatsBar', 'Testimonials', 'CTABanner', 'ContactForm', 'MapEmbed', 'Footer'],
   },
   {
     href:       '/demo/consultora',
     title:      'Consultora Profesional',
     client:     'Mendoza & Asociados',
-    desc:       'Firma de asesoría contable, fiscal y empresarial con planes de precio.',
-    color:      'from-slate-700 to-blue-900',
-    components: ['Navbar', 'HeroCentered', 'LogoBar', 'CardGrid', 'ProcessSteps', 'PricingCards', 'Testimonials', 'FAQ', 'ContactForm', 'Footer', 'WhatsAppFloat'],
-    tag:        'Servicios profesionales',
+    desc:       'Firma contable y fiscal con precios, proceso y toggle claro/oscuro en la navbar.',
+    gradient:   'from-slate-700 via-slate-800 to-blue-900',
+    accent:     '#818cf8',
+    tag:        'Toggle Claro/Oscuro',
+    components: ['Navbar', 'HeroCentered', 'LogoBar', 'CardGrid', 'ProcessSteps', 'PricingCards', 'Testimonials', 'FAQ', 'ContactForm', 'Footer'],
   },
 ];
+
+const totalComponents = components.reduce((acc, cat) => acc + cat.items.length, 0);
 ---
 <CatalogLayout>
 
-  <!-- Top bar -->
-  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
-      <div class="flex items-center gap-3">
-        <span class="font-[JetBrains_Mono,monospace] text-slate-400 text-sm">web-modules</span>
-        <span class="text-slate-700">/</span>
-        <span class="font-[JetBrains_Mono,monospace] text-slate-200 text-sm">catálogo</span>
-      </div>
-      <nav class="flex items-center gap-1">
-        {demos.map(d => (
+  <!-- Navbar del catálogo -->
+  <nav id="catalog-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-2">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#6b7280;">web-modules</span>
+          <span style="color:#374151;">/</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#e5e7eb;">catálogo</span>
+        </div>
+        <div class="hidden md:flex items-center gap-2">
+          {demos.map(d => (
+            <a
+              href={d.href}
+              style="font-size:0.8rem;color:#9ca3af;padding:0.375rem 0.75rem;border-radius:0.5rem;transition:all 0.2s;"
+              onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.07)'"
+              onmouseout="this.style.color='#9ca3af';this.style.background='transparent'"
+            >
+              {d.title}
+            </a>
+          ))}
           <a
-            href={d.href}
-            class="text-xs text-slate-400 hover:text-white px-3 py-1.5 rounded-md hover:bg-slate-800 transition-colors"
+            href="https://github.com/joytresde/web-modules"
+            target="_blank"
+            rel="noopener"
+            style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.375rem 1rem;background:linear-gradient(to right,#557bd6,#005668);color:#fff;font-size:0.8rem;font-weight:600;border-radius:0.5rem;text-decoration:none;transition:all 0.2s;"
           >
-            {d.title}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            GitHub
           </a>
-        ))}
-      </nav>
+        </div>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <!-- Hero del catálogo -->
-  <section class="py-24 sm:py-32 border-b border-slate-800">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="inline-flex items-center gap-2 bg-violet-500/10 border border-violet-500/30 text-violet-300 text-xs font-semibold px-3 py-1 rounded-full mb-8">
-        <span class="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse"></span>
+  <script is:inline>
+    const nav = document.getElementById('catalog-nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        nav.style.background = 'rgba(3,7,18,0.88)';
+        nav.style.backdropFilter = 'blur(12px)';
+        nav.style.borderBottom = '1px solid rgba(55,65,81,0.3)';
+      } else {
+        nav.style.background = 'transparent';
+        nav.style.backdropFilter = 'none';
+        nav.style.borderBottom = 'none';
+      }
+    });
+  </script>
+
+  <!-- Hero -->
+  <section style="min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,#030712 0%,#1a1d3a 50%,#030712 100%);position:relative;overflow:hidden;padding-top:4rem;">
+    <!-- Glow orbs -->
+    <div style="position:absolute;top:20%;left:10%;width:400px;height:400px;background:radial-gradient(circle,rgba(85,123,214,0.12) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+    <div style="position:absolute;bottom:20%;right:10%;width:350px;height:350px;background:radial-gradient(circle,rgba(124,58,237,0.1) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+
+    <div style="position:relative;z-index:10;width:100%;max-width:72rem;margin:0 auto;padding:4rem 1.5rem;">
+      <!-- Badge -->
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(85,123,214,0.1);border:1px solid rgba(85,123,214,0.3);color:#93b4f5;font-size:0.75rem;font-weight:600;padding:0.375rem 0.875rem;border-radius:9999px;margin-bottom:2rem;">
+        <span style="width:6px;height:6px;border-radius:50%;background:#557bd6;animation:pulse 2s infinite;display:inline-block;"></span>
         Sistema modular · Astro 6 + Tailwind v4
       </div>
-      <h1 class="text-5xl sm:text-6xl font-bold text-white leading-tight tracking-tight">
+
+      <!-- Headline -->
+      <h1 style="font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.5rem;">
         Catálogo de<br />
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-sky-400">Componentes</span>
+        <span style="background:linear-gradient(to right,#557bd6,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Componentes</span>
       </h1>
-      <p class="mt-6 text-lg text-slate-400 max-w-2xl leading-relaxed">
-        17 módulos tipo "puzzle" intercambiables entre clientes. Solo cambian colores y textos.
-        El código de los componentes nunca se modifica.
+
+      <p style="font-size:1.125rem;color:#9ca3af;max-width:36rem;line-height:1.7;margin-bottom:2.5rem;">
+        {totalComponents} módulos tipo "puzzle" intercambiables entre clientes.
+        Solo cambian colores y textos — el código de los componentes nunca se modifica.
       </p>
-      <div class="mt-8 flex flex-wrap gap-6 text-sm text-slate-500">
-        <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> TypeScript strict</span>
-        <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Sin colores hardcodeados</span>
-        <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Mobile-first</span>
-        <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Accesibilidad AA</span>
-        <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Sin JS innecesario</span>
+
+      <!-- Feature badges -->
+      <div style="display:flex;flex-wrap:wrap;gap:1.5rem;font-size:0.875rem;color:#6b7280;margin-bottom:3rem;">
+        {['TypeScript strict', 'Sin colores hardcodeados', 'Mobile-first', 'Accesibilidad AA', 'Sin JS innecesario'].map(f => (
+          <span style="display:flex;align-items:center;gap:0.375rem;">
+            <span style="color:#10b981;">✓</span> {f}
+          </span>
+        ))}
+      </div>
+
+      <!-- Stats row -->
+      <div style="display:flex;flex-wrap:wrap;gap:2rem;">
+        <div>
+          <div style="font-size:2rem;font-weight:800;color:#fff;">{totalComponents}</div>
+          <div style="font-size:0.8rem;color:#6b7280;margin-top:0.25rem;">componentes</div>
+        </div>
+        <div style="width:1px;background:#1f2937;"></div>
+        <div>
+          <div style="font-size:2rem;font-weight:800;color:#fff;">3</div>
+          <div style="font-size:0.8rem;color:#6b7280;margin-top:0.25rem;">demos activas</div>
+        </div>
+        <div style="width:1px;background:#1f2937;"></div>
+        <div>
+          <div style="font-size:2rem;font-weight:800;color:#fff;">0</div>
+          <div style="font-size:0.8rem;color:#6b7280;margin-top:0.25rem;">colores hardcodeados</div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Componentes por categoría -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+  <main style="max-width:80rem;margin:0 auto;padding:5rem 1.5rem;display:flex;flex-direction:column;gap:4rem;">
 
     {components.map(cat => (
       <section>
-        <div class={`inline-flex items-center gap-2 border rounded-full px-3 py-1 text-xs font-semibold mb-6 ${cat.color}`}>
-          <span class={`w-1.5 h-1.5 rounded-full ${cat.dot}`}></span>
+        <!-- Category label -->
+        <div style={`display:inline-flex;align-items:center;gap:0.5rem;background:${cat.accent}18;border:1px solid ${cat.accent}44;color:${cat.accent};font-size:0.75rem;font-weight:600;padding:0.375rem 0.875rem;border-radius:9999px;margin-bottom:1.5rem;`}>
+          <span style={`width:6px;height:6px;border-radius:50%;background:${cat.accent};display:inline-block;`}></span>
           {cat.category}
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;">
           {cat.items.map(c => (
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col gap-3 hover:border-slate-700 transition-colors">
-              <div class="flex items-start justify-between gap-2">
-                <span class="text-2xl">{c.icon}</span>
-                <code class="font-[JetBrains_Mono,monospace] text-xs text-slate-500 bg-slate-800 px-2 py-0.5 rounded shrink-0">
+            <div
+              style={`background:rgba(31,41,55,0.5);backdrop-filter:blur(4px);border:1px solid rgba(55,65,81,0.5);border-radius:1rem;padding:1.25rem;display:flex;flex-direction:column;gap:0.875rem;transition:all 0.3s;`}
+              onmouseover={`this.style.borderColor='${cat.accent}66';this.style.background='rgba(31,41,55,0.7)';`}
+              onmouseout="this.style.borderColor='rgba(55,65,81,0.5)';this.style.background='rgba(31,41,55,0.5)';"
+            >
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;">
+                <span style="font-size:1.5rem;">{c.icon}</span>
+                <code style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#6b7280;background:#111827;padding:0.125rem 0.5rem;border-radius:0.375rem;white-space:nowrap;flex-shrink:0;">
                   {c.file}
                 </code>
               </div>
               <div>
-                <h3 class="font-semibold text-white text-sm mb-1">{c.name}</h3>
-                <p class="text-slate-400 text-xs leading-relaxed">{c.desc}</p>
+                <h3 style="font-weight:600;color:#fff;font-size:0.9rem;margin-bottom:0.375rem;">{c.name}</h3>
+                <p style="color:#9ca3af;font-size:0.8rem;line-height:1.6;">{c.desc}</p>
               </div>
             </div>
           ))}
@@ -173,42 +247,46 @@ const demos = [
   </main>
 
   <!-- Demos -->
-  <section class="border-t border-slate-800 py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-10">
-        <h2 class="text-3xl font-bold text-white">Demos</h2>
-        <p class="mt-2 text-slate-400 text-sm">Los mismos componentes reordenados para 3 tipos de negocio distintos.</p>
+  <section style="border-top:1px solid #1f2937;padding:5rem 1.5rem;">
+    <div style="max-width:80rem;margin:0 auto;">
+      <div style="margin-bottom:2.5rem;">
+        <h2 style="font-size:2rem;font-weight:800;color:#fff;margin-bottom:0.5rem;">Demos</h2>
+        <p style="color:#9ca3af;font-size:0.9rem;">Los mismos componentes reordenados para 3 tipos de negocio. Cada demo usa una paleta y modo de color distinto.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;">
         {demos.map(demo => (
           <a
             href={demo.href}
-            class="group relative flex flex-col bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-600 transition-all hover:-translate-y-1 duration-200"
+            style="display:flex;flex-direction:column;background:rgba(31,41,55,0.5);backdrop-filter:blur(4px);border:1px solid rgba(55,65,81,0.5);border-radius:1.25rem;overflow:hidden;text-decoration:none;transition:all 0.3s;"
+            onmouseover="this.style.borderColor='rgba(85,123,214,0.5)';this.style.transform='translateY(-4px)';this.style.background='rgba(31,41,55,0.7)';"
+            onmouseout="this.style.borderColor='rgba(55,65,81,0.5)';this.style.transform='translateY(0)';this.style.background='rgba(31,41,55,0.5)';"
           >
-            <!-- Header degradado -->
-            <div class={`h-28 bg-gradient-to-br ${demo.color} flex items-end p-5`}>
-              <span class="text-xs font-semibold bg-black/30 text-white/80 px-2 py-0.5 rounded-full backdrop-blur-sm">
+            <!-- Gradient header -->
+            <div style={`height:7rem;background:linear-gradient(135deg,var(--from) 0%,var(--via) 50%,var(--to) 100%);display:flex;align-items:flex-end;padding:1rem 1.25rem;background-image:linear-gradient(135deg,${demo.gradient.replace('from-','').replace('via-','').replace('to-','')});`}
+              class={`bg-gradient-to-br ${demo.gradient}`}
+            >
+              <span style="font-size:0.7rem;font-weight:600;background:rgba(0,0,0,0.4);color:rgba(255,255,255,0.85);padding:0.25rem 0.625rem;border-radius:9999px;backdrop-filter:blur(4px);">
                 {demo.tag}
               </span>
             </div>
 
-            <div class="p-5 flex flex-col gap-3 flex-1">
+            <div style="padding:1.25rem;display:flex;flex-direction:column;gap:0.875rem;flex:1;">
               <div>
-                <p class="text-xs text-slate-500 font-mono mb-1">{demo.client}</p>
-                <h3 class="font-bold text-white text-lg leading-tight">{demo.title}</h3>
-                <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">{demo.desc}</p>
+                <p style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#6b7280;margin-bottom:0.25rem;">{demo.client}</p>
+                <h3 style="font-weight:700;color:#fff;font-size:1.05rem;line-height:1.3;">{demo.title}</h3>
+                <p style="color:#9ca3af;font-size:0.78rem;margin-top:0.375rem;line-height:1.6;">{demo.desc}</p>
               </div>
 
-              <div class="flex flex-wrap gap-1 mt-auto pt-3">
+              <div style="display:flex;flex-wrap:wrap;gap:0.375rem;padding-top:0.5rem;border-top:1px solid #1f2937;">
                 {demo.components.map(c => (
-                  <span class="text-xs text-slate-500 bg-slate-800 px-2 py-0.5 rounded font-mono">{c}</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#6b7280;background:#111827;padding:0.125rem 0.5rem;border-radius:0.25rem;">{c}</span>
                 ))}
               </div>
 
-              <div class="flex items-center gap-1 text-slate-400 group-hover:text-white transition-colors text-sm font-medium pt-1">
+              <div style={`display:inline-flex;align-items:center;gap:0.375rem;color:${demo.accent};font-size:0.85rem;font-weight:600;margin-top:auto;`}>
                 Ver demo
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                 </svg>
               </div>
@@ -220,11 +298,20 @@ const demos = [
   </section>
 
   <!-- Footer del catálogo -->
-  <footer class="border-t border-slate-800 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-xs text-slate-600 font-mono">web-modules v1.0 · palacios3d.com</p>
-      <p class="text-xs text-slate-600">Astro 6 · Tailwind CSS v4 · TypeScript strict</p>
+  <footer style="border-top:1px solid #1f2937;padding:2rem 1.5rem;">
+    <div style="max-width:80rem;margin:0 auto;display:flex;flex-direction:column;gap:0.5rem;align-items:center;justify-content:space-between;">
+      <div style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;justify-content:space-between;width:100%;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#4b5563;">web-modules v1.0 · palacios3d.com</p>
+        <p style="font-size:0.75rem;color:#4b5563;">Astro 6 · Tailwind CSS v4 · TypeScript strict</p>
+      </div>
     </div>
   </footer>
 
 </CatalogLayout>
+
+<style>
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+</style>
